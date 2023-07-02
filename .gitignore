@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,python,git
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,python,git
 
+### FireBase Key ###
+*Key.json
+
 ### Git ###
 # Created by git for backups. To disable backups in Git:
 # $ git config --global mergetool.keepBackup false
