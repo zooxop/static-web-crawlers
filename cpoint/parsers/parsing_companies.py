@@ -7,16 +7,24 @@ participating_companies_url = "https://cpoint.or.kr/netzero/entGuide/nv_entGuide
 html = urlopen(participating_companies_url)
 bsObject = bs(html, "html.parser")
 
-print('카테고리 : ')
-for category in bsObject.find_all('a', {"class":"cate_btn"}):
-    print(category.text.strip())
+# category 리스트 가져오기
+def getCategories():
+    categories = []
 
-print('')
+    for category in bsObject.find_all('a', {"class":"cate_btn"}):
+        categories.append(category.text.strip())
 
-for button in bsObject.find_all('button', {"class":"companies_btn"}):
-    title = button.find('span', {"class":"companies_title"}).text.strip()
-    tips = button.find('span', {"class":"companies_text"}).text.strip()
-    print(title)
-    print(tips)
-    print('')
+    return categories
+
+# 참여 기업 리스트 및 tips 가져오기
+def getCompanies():
+    companies = []
+
+    for button in bsObject.find_all('button', {"class":"companies_btn"}):
+        company = []
+        company.append(button.find('span', {"class":"companies_title"}).text.strip())
+        company.append(button.find('span', {"class":"companies_text"}).text.strip())
+        companies.append(company)
+
+    return companies
     
